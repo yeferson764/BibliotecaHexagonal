@@ -23,7 +23,6 @@ namespace Biblioteca.Domain.Ports.In
             var error = await _service.ValidarNuevoMaterialAsync(material);
             if (error != null) return error;
 
-            // Se fuerza cantidad actual al valor ingresado en registrada
             material.CantidadActual = material.CantidadRegistrada;
 
             await _repo.AddAsync(material);

@@ -17,17 +17,14 @@ namespace Biblioteca.Domain.Services
 
         public async Task<string?> ValidarNuevoMaterialAsync(Material material)
         {
-            // Validar existencia del tipo de material
             var existeTipo = await _tipoRepo.GetByIdAsync(material.TipoMaterialId);
             if (existeTipo == null)
                 return "El tipo de material no existe.";
 
-            // Validar que no exista otro material con el mismo título
             var existente = await _repo.GetByTituloAsync(material.Titulo);
             if (existente != null)
                 return "Ya existe un material con ese título.";
 
-            // Validaciones numéricas
             if (material.CantidadRegistrada < 0)
                 return "La cantidad registrada no puede ser negativa.";
 
@@ -37,7 +34,7 @@ namespace Biblioteca.Domain.Services
             if (material.CantidadActual > material.CantidadRegistrada)
                 return "La cantidad actual no puede exceder la registrada.";
 
-            return null; // Todo está bien
+            return null;
         }
 
 

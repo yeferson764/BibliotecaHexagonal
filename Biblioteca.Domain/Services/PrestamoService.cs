@@ -32,7 +32,7 @@ namespace Biblioteca.Domain.Services
             if (activos >= rol.CapacidadPrestamo)
                 return $"Capacidad de préstamo alcanzada ({rol.CapacidadPrestamo}).";
 
-            return null; // ok
+            return null;
         }
     }
 }

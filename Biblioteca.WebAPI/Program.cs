@@ -18,13 +18,11 @@ builder.Services.AddScoped<IPrestamoRepository, PrestamoRepository>();
 builder.Services.AddScoped<IPersonaRepository, PersonaRepository>();
 builder.Services.AddScoped<IRolRepository, RolRepository>();
 
-
 builder.Services.AddScoped<TipoMaterialService>();
 builder.Services.AddScoped<MaterialService>();
 builder.Services.AddScoped<PrestamoService>();
 builder.Services.AddScoped<PersonaService>();
 builder.Services.AddScoped<RolService>();
-
 
 builder.Services.AddScoped<TipoMaterialUseCases>();
 builder.Services.AddScoped<MaterialUseCases>();
@@ -33,17 +31,15 @@ builder.Services.AddScoped<PersonaUseCases>();
 builder.Services.AddScoped<RolUseCases>();
 
 
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddControllers(); // <-- Necesario para registrar tus controladores
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
-app.MapControllers(); // <-- Esto activa los endpoints tipo api/[controller]
+app.MapControllers();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -18,10 +18,6 @@ namespace Biblioteca.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configurar entidades sin relaciones de navegación
-            // Solo configuraciones básicas de las propiedades
-
-            // Configuración de Persona
             modelBuilder.Entity<Persona>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -34,12 +30,10 @@ namespace Biblioteca.Infrastructure.Persistence
                 entity.Property(e => e.RolId)
                     .IsRequired();
 
-                // Índice único para cédula
                 entity.HasIndex(e => e.Cedula)
                     .IsUnique();
             });
 
-            // Configuración de Material
             modelBuilder.Entity<Material>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -53,12 +47,10 @@ namespace Biblioteca.Infrastructure.Persistence
                 entity.Property(e => e.CantidadActual)
                     .IsRequired();
 
-                // Índice único para título
                 entity.HasIndex(e => e.Titulo)
                     .IsUnique();
             });
 
-            // Configuración de Prestamo
             modelBuilder.Entity<Prestamo>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -67,13 +59,11 @@ namespace Biblioteca.Infrastructure.Persistence
                 entity.Property(e => e.MaterialId)
                     .IsRequired();
                 entity.Property(e => e.FechaDevolucion)
-                    .IsRequired(false); // Nullable
+                    .IsRequired(false);
 
-                // La propiedad Devuelto es computed, no la mapeamos
                 entity.Ignore(e => e.Devuelto);
             });
 
-            // Configuración de Rol
             modelBuilder.Entity<Rol>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -84,7 +74,6 @@ namespace Biblioteca.Infrastructure.Persistence
                     .IsRequired();
             });
 
-            // Configuración de TipoMaterial
             modelBuilder.Entity<TipoMaterial>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -92,9 +81,6 @@ namespace Biblioteca.Infrastructure.Persistence
                     .IsRequired()
                     .HasMaxLength(50);
             });
-
-            // NO crear foreign keys - solo configurar las propiedades como int
-            // Esto mantiene la arquitectura hexagonal sin relaciones de EF
         }
     }
 }

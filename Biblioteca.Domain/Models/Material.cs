@@ -10,7 +10,7 @@ namespace Biblioteca.Domain.Models
     {
         public int Id { get; set; }
         public string Titulo { get; set; }
-        public int TipoMaterialId { get; set; } // Relación por ID
+        public int TipoMaterialId { get; set; }
         public DateTime FechaRegistro { get; set; } = DateTime.Now;
         public int CantidadRegistrada { get; set; }
         public int CantidadActual { get; set; }

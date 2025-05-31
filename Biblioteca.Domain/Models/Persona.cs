@@ -8,9 +8,9 @@ namespace Biblioteca.Domain.Models
 {
     public class Persona
     {
-        public int Id { get; set; } // Autoincremental
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Cedula { get; set; }
-        public int RolId { get; set; } // Solo guarda el ID del rol
+        public int RolId { get; set; }
     }
 }

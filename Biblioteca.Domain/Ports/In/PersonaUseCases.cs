@@ -8,7 +8,7 @@ namespace Biblioteca.Domain.Ports.In
     {
         private readonly PersonaService _service;
         private readonly IPersonaRepository _repo;
-        private readonly IRolRepository? _rolRepo; // opcional, por si usas lógica de capacidad
+        private readonly IRolRepository? _rolRepo;
 
         public PersonaUseCases(PersonaService service, IPersonaRepository repo, IRolRepository? rolRepo = null)
         {
